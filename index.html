@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yamel Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+  </header>
+
+  <main>
+    <p id="description"></p>
+    <button id="switch-lang">Français / English</button>
+  </main>
+
+  <script>
+    // --- 1. Contenu dans les deux langues ---
+    const content = {
+      en: {
+        title: "Welcome to Yamel’s Website",
+        subtitle: "Learning HTML and CSS step by step",
+        description: "This is the English version of the site. Enjoy your visit!"
+      },
+      fr: {
+        title: "Bienvenue sur le site de Yamel",
+        subtitle: "Apprentissage du HTML et du CSS pas à pas",
+        description: "Ceci est la version française du site. Bonne visite !"
+      }
+    };
+
+    // --- 2. Détecter la langue du navigateur ---
+    let lang = navigator.language.startsWith("fr") ? "fr" : "en";
+
+    // --- 3. Fonction pour mettre à jour le texte ---
+    function updateLanguage() {
+      document.getElementById("title").textContent = content[lang].title;
+      document.getElementById("subtitle").textContent = content[lang].subtitle;
+      document.getElementById("description").textContent = content[lang].description;
+    }
+
+    // --- 4. Permettre à l’utilisateur de changer la langue ---
+    document.getElementById("switch-lang").addEventListener("click", () => {
+      lang = lang === "fr" ? "en" : "fr";
+      updateLanguage();
+    });
+
+    // --- 5. Appliquer la langue au chargement du site ---
+    updateLanguage();
+  </script>
+</body>
+</html>
